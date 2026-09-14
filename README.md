@@ -119,6 +119,21 @@ staffing decisions.
 - Always report both, and always show a predicted-vs-actual plot — a single
   number is easy to game, a plot isn't.
 
+**Classical (SARIMA) vs ML (XGBoost), same store:**
+
+| Model | RMSE | MAPE |
+|---|---|---|
+| SARIMA (univariate, order (1,1,1)(1,1,1,7)) | 1684.7 | 10.6% |
+| XGBoost (lag/rolling/calendar features) | 947.8 | 5.3% |
+
+On store 733, XGBoost's error is roughly **half** SARIMA's. The gap isn't
+really about model sophistication — it's about inputs: this SARIMA setup
+only sees the store's own past sales, while XGBoost also gets Promo,
+holiday, and calendar features plus rolling statistics. A fairer SARIMA
+comparison would add exogenous regressors (SARIMAX) for Promo/holiday
+flags, which would likely close some of this gap — a good next step
+rather than a final verdict on "classical vs ML."
+
 ## Ideas to extend further
 
 - Wrap the best model in a small Streamlit app (upload a store ID, get a forecast)
