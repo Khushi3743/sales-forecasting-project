@@ -109,6 +109,9 @@ staffing decisions.
   store ~2,704/day — an 8x spread, which is why a single global average
   metric only tells part of the story.
   
+  ![Predicted vs actual sales for a sample store](assets/predicted_vs_actual.png)
+
+*XGBoost predictions vs actual sales for one of the best-performing stores in the test set.*
 ## Metrics
 
 - **RMSE** — penalizes large misses, standard for regression-style forecasting
